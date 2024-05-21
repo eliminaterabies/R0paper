@@ -153,6 +153,7 @@ monthly.Rout: monthly.R public_data/R0rabiesdataMonthly.csv public_data/monthlyT
 
 ######################################################################
 
+Sources += public_data/*.rd*
 msvals.Rout: msvals.R public_data/bitten.rda slow/egf_R0.rda public_data/intervals.rda public_data/linked.rda simparams.rda
 	$(pipeR)
 
