@@ -31,8 +31,10 @@ draft.pdf.final.pdf: $(Sources)
 ## Other dependencies should be in texknit/doc.tex.mk
 draft.pdf: texknit/doc.makedeps doc.Rnw
 
-texknit/doc.tex: delphi.pars.rda slow/msvals.rda | texknit
+texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
 ## TODO: fancify and export both of these recipe lines ☺
+
+Sources += knitr.tex
 .PRECIOUS: texknit/%.tex
 texknit/%.tex: %.Rnw | texknit
 	Rscript -e "library(\"knitr\"); knit(\"$<\")"
@@ -41,6 +43,8 @@ texknit/%.tex: %.Rnw | texknit
 Ignore += texknit
 texknit:
 	$(mkdir)
+
+Sources += interval.png
 
 ######################################################################
 
@@ -55,7 +59,6 @@ Sources += $(wildcard *.R)
 ## softDecline.pars.Rout: softDecline.R
 ## lowPeaks.pars.Rout: lowPeaks.R
 
-## Not sure if this is needed 2024 Jan 17 (Wed)
 pipeRimplicit += pars
 %.pars.Rout: pars.R base.R %.R
 	$(pipeR)
@@ -144,8 +147,91 @@ compare.Rout: compare.R softClimb.mm_plot.rds lowPeaks.mm_plot.rds base.mm_plot.
 ## Read two data sets into a long frame
 ## Trim out Excel padding; add time offsets
 
-Sources += datadir/*.*sv
-monthly.Rout: monthly.R datadir/R0rabiesdataMonthly.csv datadir/monthlyTSdogs.csv datadir/varnames.tsv
+Sources += public_data/*.*sv
+monthly.Rout: monthly.R public_data/R0rabiesdataMonthly.csv public_data/monthlyTSdogs.csv public_data/varnames.tsv
+	$(pipeR)
+
+######################################################################
+
+msvals.Rout: msvals.R public_data/bitten.rda slow/egf_R0.rda public_data/intervals.rda public_data/linked.rda simparams.rda
+	$(pipeR)
+
+######################################################################
+
+## We've now selected Delphi and are sticking with it
+## pipeRimplicit += egf_single
+
+## Do an egf fit 
+
+exp.Rout: exp.R
+	$(pipeR)
+
+logistic.Rout: logistic.R
+	$(pipeR)
+
+pipeRimplicit += egf_single
+
+## exp.egf_single.Rout: egf_single.R
+## logistic.egf_single.Rout: egf_single.R
+
+%.egf_single.Rout: egf_single.R delphi.mm_windows.rda %.rda
+	$(pipeR)
+
+pipeRimplicit += egf_plot
+## exp.egf_plot.Rout: egf_plot.R
+## logistic.egf_plot.Rout: egf_plot.R
+%.egf_plot.Rout: egf_plot.R %.egf_single.rds
+	$(pipeR)
+
+pipeRimplicit += egf_rplot
+
+## exp.rplot.Rout:
+## logistic.rplot.Rout:
+%.rplot.Rout: rplot.R %.egf_single.rds
+	$(pipeR)
+
+rplot_combo.Rout: rplot_combo.R exp.egf_single.rds logistic.egf_single.rds public_data/series.tsv
+	$(pipeR)
+
+pipeRimplicit += egf_sample
+
+simparams.Rout: simparams.R
+	$(pipeR)
+
+## exp.egf_sample.Rout: egf_sample.R
+## logistic.egf_sample.Rout:
+%.egf_sample.Rout: egf_sample.R %.egf_single.rds simparams.rda
+	$(pipeR)
+
+simR0_funs.Rout: simR0_funs.R
+R0est_funs.Rout: R0est_funs.R
+
+Sources += $(wildcard slow/*.rda)
+
+## slow/egf_R0.Rout: egf_R0.R R0est_funs.R simparams.R
+## slowtarget/egf_R0.Rout: egf_R0.R simparams.R
+slowtarget/egf_R0.Rout: egf_R0.R exp.egf_sample.rds logistic.egf_sample.rds simR0_funs.rda R0est_funs.rda public_data/intervals.rda public_data/biteDist.rds simparams.rda
+	$(pipeR)
+
+R0plot.Rout: R0plot.R slow/egf_R0.rda public_data/series.tsv
+	$(pipeR)
+
+KH_R0.Rout: KH_R0.R public_data/series.tsv slow/egf_R0.rda
+	$(pipeR)
+
+R0combo.Rout: R0combo.R KH_R0.rds R0plot.rds
+	$(pipeR)
+
+mexico.Rout: mexico.R slow/egf_R0.rda KH_R0.rds
+	$(pipeR)
+
+## Epigrowthfit version
+version.Rout: version.R
+	$(pipeR)
+
+######################################################################
+
+intervalPlots.Rout: intervalPlots.R public_data/intervals.rda 
 	$(pipeR)
 
 ######################################################################
@@ -168,6 +254,7 @@ makestuff/%.stamp:
 
 -include makestuff/pipeR.mk
 -include makestuff/texi.mk
+-include makestuff/slowtarget.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk

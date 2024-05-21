@@ -1,6 +1,6 @@
 <<echo=FALSE,warning=FALSE,comment=FALSE>>=
 load("delphi.pars.rda")
-load("slow/msvals.rda")
+load("msvals.rda")
 @
 
 \section*{Abstract}
