@@ -47,6 +47,7 @@ texknit:
 ## Evaluate ts parameters
 
 autopipeR=defined
+Sources += $(wildcard *.R)
 
 ## Parameter sets
 ## delphi.pars.Rout: delphi.R
@@ -151,7 +152,7 @@ monthly.Rout: monthly.R datadir/R0rabiesdataMonthly.csv datadir/monthlyTSdogs.cs
 
 ### Makestuff
 
-Sources += Makefile
+Sources += Makefile .gitignore
 
 Ignore += makestuff
 msrepo = https://github.com/dushoff
