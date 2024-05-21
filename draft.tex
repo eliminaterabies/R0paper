@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+\input{knitr.tex}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{grffile}
+\usepackage{color}
+\usepackage{soul}
+\usepackage{tabularx}
+\usepackage{multirow}
+% use \xspace to allow for space after a macro as necessary
+\usepackage{xspace}
+\usepackage{pdfpages}
+\usepackage[top=1in, bottom=1in, left=1.25in, right=1.25in]{geometry}
+
+\definecolor{commentcol}{rgb}{0.345, 0.345, 0.945}
+\newcommand{\comment}[1]{\textcolor{commentcol}{[[#1]]}}%
+\newcommand{\code}[1]{\texttt{#1}}
+
+% general-purpose mathrm macros
+\newcommand{\symsub}[2]{\ensuremath{#1_{\tiny \mathrm{#2}}}\xspace}
+\newcommand{\mrm}[1]{\ensuremath{\mathrm{#1}}
+\xspace}
+
+\usepackage{framed}
+
+\definecolor{randomcolor}{rgb}{.97, .27, .67}
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+
+\usepackage{alltt}
+\usepackage[]{natbib}
+\usepackage{blkarray}
+\usepackage{amsmath}
+\usepackage{alltt}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc} % for accented characters
+
+%% \pagenumbering{gobble}
+%% stuff for editing
+%\usepackage[markup=nocolor,addedmarkup=bf,deletedmarkup=sout]{changes}
+%% to suppress notes & comments: \usepackage[final]{changes}
+\usepackage{setspace}
+%% \usepackage{changes} %%% Not playing well with others!
+%% \usepackage[backgroundcolor=lightgray,textsize=tiny]{todonotes}
+\usepackage[]{todonotes}
+
+\bibliographystyle{chicago}
+\title{Reassessing global historical \rzero estimates of canine rabies}
+\author{Michael Li, Michael Roswell, Katie Hampson, Ben Bolker and Jonathan Dushoff}
+
+\providecommand{\keywords}[1]{\textbf{\textit{Keywords:}} #1}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+%% \SweaveOpts{concordance=TRUE}
+\newcommand{\dbic}{\ensuremath \Delta \texttt{BIC}}
+
+\newcommand{\bmb}[1]{\comment{BB: #1}}
+\newcommand{\jd}[1]{\comment{JD: #1}}
+\newcommand{\kh}[1]{\comment{KH: #1}}
+\newcommand{\mli}[1]{{\color{red} ML: #1}}
+\newcommand{\mr}[1]{{\color{blue} MR: #1}}
+
+\newcommand{\eqnref}[1]{Eq~\eqref{eq:#1}}
+\newcommand{\eqnlabel}[1]{\label{eq:#1}}
+
+\newcommand{\fref}[1]{Figure~\ref{fig:#1}}
+\newcommand{\Fref}[1]{Figure~\ref{fig:#1}}
+\newcommand{\flabel}[1]{\label{fig:#1}}
+
+\newcommand{\add}[1]{{\color{blue} ADD: #1}}
+
+\newcommand{\rzero}{\ensuremath{{\mathcal R}_0}\xspace}
+\newcommand{\re}{\ensuremath{{\mathcal R}_{e}}\xspace}
+
+\newcommand{\littler}{\ensuremath{r_0}\xspace}
+
+\newcommand{\Gx}{\textsl{G}}
+\newcommand{\G}{\Gx\xspace}
+\newcommand{\Gs}{\Gx \xspace}
+
+\newcommand{\SIx}{\textsl{SI}}
+\newcommand{\SI}{\SIx\xspace}
+\newcommand{\SIs}{\SIx s\xspace}
+
+%% END MACROS SECTION
+
+%\SweaveOpts{concordance=TRUE}
+%\SweaveOpts{concordance=TRUE}
+% \maketitle
+
+{\Large
+\textbf\newline{Reassessing global historical \rzero estimates of canine rabies} % Please use "sentence case" for title and headings (capitalize only the first word in a title (or heading), the first word in a subtitle (or subheading), and any proper nouns).
+}
+\newline
+% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
+\\
+Michael Li\textsuperscript{1,2*},
+Michael Roswell \textsuperscript{1,3},
+Katie Hampson\textsuperscript{4},
+Benjamin M. Bolker\textsuperscript{1,2,5},
+Jonathan Dushoff\textsuperscript{1,2,5}
+\\
+\\
+\\
+* Corresponding author: lim88@mcmaster.ca \\
+\textbf{1} Department of Biology, McMaster University, Hamilton, Ontario, Canada
+\\
+\textbf{2} Department of Mathematics and Statistics, McMaster University, Hamilton, Ontario, Canada
+\\
+\textbf{3} Department of Biology, University of Maryland, College Park, Maryland,  USA
+\\
+\textbf{4} Institute of BAH\&CM, University of Glasgow, Glasgow, UK
+\\
+\textbf{5} Institute for Infectious Diseases Research, McMaster University, Hamilton, Ontario, Canada
+\\
+\bigskip
+
+% Insert additional author notes using the symbols described below. Insert symbol callouts after author names as necessary.
+%
+% Remove or comment out the author notes below if they aren't used.
+\doublespacing
+
+\keywords{incubation period, infectious period, generation interval}
+
+\input{texknit/doc.tex}
+
+\singlespacing
+
+\bibliography{rabies}
+
+\end{document}

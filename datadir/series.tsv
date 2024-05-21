@@ -1,0 +1,17 @@
+varname	datname	Location	year	start	end	vac
+NYcounties	Nystatecounties	NYstate	1945	1	6	0
+NYcentral	centralNY	CentralNY, US	1944	5	11	0
+Israel	Israel	Israel	1948	1	9	0
+Tokyo1	JapanTokyo	Tokyo, JP	1948	1	29	0
+Kanagawa	KanagawaJapan	Kanagawa, JP	1917	1	8	0
+Tokyo2	Tokyo	Tokyo, JP	1918	1	4	0
+Peru	Peru	Peru	1984	3	8	0
+Mexico	Mexico	Mexico	1987	7	11	0
+Selangor	Selangor	Selangor, MY	1951	8	11	0
+Perak	Perak	Perak		1	6	0
+SultanHamad	SultanHamad	Sultan Hamad, KE	1992	1	4	0.24
+Java	Java	Java, IDN	1985	1	4	0
+Memphis	Memphis	Memphis, US	1947	1	3	0.1
+HongKong	HongKong	HongKong	1949	4	8	0
+Serengeti	SD	Serengeti, TZ	2003	10	24	0.2
+Ngorongoro	ND	Ngorongoro, TZ	2003	14	23	0.2
