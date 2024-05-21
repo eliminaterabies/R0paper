@@ -153,6 +153,7 @@ monthly.Rout: monthly.R datadir/R0rabiesdataMonthly.csv datadir/monthlyTSdogs.cs
 ### Makestuff
 
 Sources += Makefile .gitignore
+Sources += notes.md README.md
 
 Ignore += makestuff
 msrepo = https://github.com/dushoff
