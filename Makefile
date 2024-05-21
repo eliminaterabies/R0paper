@@ -170,4 +170,5 @@ makestuff/%.stamp:
 -include makestuff/texi.mk
 
 -include makestuff/git.mk
+-include makestuff/visual.mk
 
