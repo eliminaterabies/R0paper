@@ -33,6 +33,8 @@ draft.pdf: doc.Rnw
 
 draft.tex.deps: texknit/doc.tex.deps 
 
+draft.tex.mk: makestuff/texj.pl
+
 ######################################################################
 ## TODO: fancify and export both of these recipe lines ☺
 
