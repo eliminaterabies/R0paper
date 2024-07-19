@@ -29,7 +29,7 @@ draft.pdf.final.pdf: $(Sources)
 ## draft.tex.pdf: draft.tex doc.Rnw
 
 ## Other dependencies should be in texknit/doc.tex.mk
-draft.pdf: texknit/doc.makedeps doc.Rnw
+draft.pdf: texknit/doc.tex.deps doc.Rnw
 
 texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
 ## TODO: fancify and export both of these recipe lines ☺
