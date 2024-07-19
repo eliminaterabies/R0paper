@@ -16,8 +16,6 @@ vim_session:
 Sources += doc.Rnw draft.tex 
 Sources += $(wildcard *.bib)
 
-## This is the main rule
-## draft.pdf.final: rabies.bib draft.tex doc.Rnw
 ## draft.pdf: draft.tex doc.Rnw
 Ignore += draft.pdf.final.pdf
 draft.final.pdf: $(Sources)
