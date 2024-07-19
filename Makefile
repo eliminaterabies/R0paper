@@ -31,8 +31,11 @@ draft.pdf.final.pdf: $(Sources)
 ## Other dependencies should be in texknit/doc.tex.mk
 draft.pdf: texknit/doc.tex.deps doc.Rnw
 
-texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
+######################################################################
 ## TODO: fancify and export both of these recipe lines ☺
+
+texknit/doc.tex.mk: | texknit
+texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
 
 Sources += knitr.tex
 .PRECIOUS: texknit/%.tex
@@ -43,6 +46,8 @@ texknit/%.tex: %.Rnw | texknit
 Ignore += texknit
 texknit:
 	$(mkdir)
+
+######################################################################
 
 Sources += interval.png
 
