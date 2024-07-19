@@ -35,7 +35,8 @@ draft.tex.deps: texknit/doc.tex.deps
 
 draft.tex.mk: makestuff/texj.pl
 
-dotdir: makestuff.sync
+testsetup: 
+	ln -s ../makestuff .
 
 ######################################################################
 ## TODO: fancify and export both of these recipe lines ☺
