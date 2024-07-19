@@ -271,4 +271,3 @@ makestuff/%.stamp:
 -include makestuff/git.mk
 -include makestuff/gitbranch.mk
 -include makestuff/visual.mk
-
