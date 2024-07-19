@@ -29,7 +29,9 @@ draft.pdf.final.pdf: $(Sources)
 ## draft.tex.pdf: draft.tex doc.Rnw
 
 ## Other dependencies should be in texknit/doc.tex.mk
-draft.pdf: texknit/doc.tex.deps doc.Rnw
+draft.pdf: doc.Rnw
+
+draft.tex.deps: texknit/doc.tex.deps 
 
 ######################################################################
 ## TODO: fancify and export both of these recipe lines ☺
