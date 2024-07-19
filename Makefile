@@ -28,10 +28,9 @@ draft.pdf.final.pdf: $(Sources)
 ## This rule will try harder to make a pdf, and less hard to make sure all of the dependencies are in order. 
 ## draft.tex.pdf: draft.tex doc.Rnw
 
-## Other dependencies should be in texknit/doc.tex.mk
 draft.pdf: doc.Rnw
 
-draft.tex.deps: texknit/doc.tex.deps 
+draft.tex.deps: texknit/doc.tex.makedeps 
 
 draft.tex.mk: makestuff/texj.pl
 
