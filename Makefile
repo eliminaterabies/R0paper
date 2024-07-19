@@ -34,9 +34,6 @@ draft.pdf: doc.Rnw
 
 draft.tex.mk: makestuff/texj.pl
 
-testsetup: 
-	ln -s ../makestuff .
-
 ######################################################################
 ## TODO: fancify and export both of these recipe lines ☺
 
