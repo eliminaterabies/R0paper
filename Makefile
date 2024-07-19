@@ -34,7 +34,7 @@ draft.pdf: texknit/doc.tex.deps doc.Rnw
 ######################################################################
 ## TODO: fancify and export both of these recipe lines ☺
 
-texknit/doc.tex.mk: | texknit
+texknit/doc.tex.deps: | texknit
 texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
 
 Sources += knitr.tex
