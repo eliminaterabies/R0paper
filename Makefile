@@ -20,25 +20,20 @@ Sources += $(wildcard *.bib)
 ## draft.pdf.final: rabies.bib draft.tex doc.Rnw
 ## draft.pdf: draft.tex doc.Rnw
 Ignore += draft.pdf.final.pdf
-draft.pdf.final.pdf: $(Sources)
+draft.final.pdf: $(Sources)
 	$(RM) $@
-	$(MAKE) draft.pdf.final
-	$(LN) draft.pdf $@
-
-## This rule will try harder to make a pdf, and less hard to make sure all of the dependencies are in order. 
-## draft.tex.pdf: draft.tex doc.Rnw
+	$(MAKE) draft.complete.pdf.final
+	$(LN) draft.complete.pdf $@
 
 draft.pdf: doc.Rnw
 
-## draft.tex.deps: texknit/doc.tex.makedeps 
-
-draft.tex.mk: makestuff/texj.pl
-
-######################################################################
-## TODO: fancify and export both of these recipe lines ☺
+draft.tex.deps: texknit/doc.tex.makedeps 
 
 texknit/doc.tex.deps: | texknit
 texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
+
+######################################################################
+## TODO: fancify and export both of these recipe lines ☺
 
 Sources += knitr.tex
 .PRECIOUS: texknit/%.tex
