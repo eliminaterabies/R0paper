@@ -30,7 +30,7 @@ draft.pdf.final.pdf: $(Sources)
 
 draft.pdf: doc.Rnw
 
-draft.tex.deps: texknit/doc.tex.makedeps 
+## draft.tex.deps: texknit/doc.tex.makedeps 
 
 draft.tex.mk: makestuff/texj.pl
 
