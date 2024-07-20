@@ -33,7 +33,7 @@ texknit/doc.tex.mk: makestuff/texj.pl
 
 ## Manually declare tex-file dependencies
 ## draft.texdeps.mk: texknit/doc.tex.mk makestuff/texj.pl
-draft.texdeps.mk: texknit/doc.tex.mk
+draft.texdeps.mk: texknit/doc.texdeps.mk
 
 ######################################################################
 ## TODO: fancify and export both of these recipe lines ☺
