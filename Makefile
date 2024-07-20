@@ -25,10 +25,10 @@ draft.final.pdf: $(Sources)
 
 draft.pdf: doc.Rnw
 
-draft.tex.deps: texknit/doc.tex.makedeps 
-
 texknit/doc.tex.deps: | texknit
 texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
+
+draft.tex.mk: makestuff/texj.pl
 
 ######################################################################
 ## TODO: fancify and export both of these recipe lines ☺
