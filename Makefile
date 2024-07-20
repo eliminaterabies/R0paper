@@ -1,5 +1,7 @@
 ## This is R0paper 2024 May 21 (Tue)
 
+cmain = main
+
 current: target
 -include target.mk
 Ignore = target.mk
