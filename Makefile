@@ -30,6 +30,9 @@ texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
 
 draft.tex.mk: makestuff/texj.pl
 
+## Manually declare tex-file dependencies
+draft.texdeps.mk: texknit/doc.tex.mk
+
 ######################################################################
 ## TODO: fancify and export both of these recipe lines ☺
 
