@@ -29,8 +29,10 @@ texknit/doc.tex.deps: | texknit
 texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
 
 draft.tex.mk: makestuff/texj.pl
+texknit/doc.tex.mk: makestuff/texj.pl
 
 ## Manually declare tex-file dependencies
+## draft.texdeps.mk: texknit/doc.tex.mk makestuff/texj.pl
 draft.texdeps.mk: texknit/doc.tex.mk
 
 ######################################################################
