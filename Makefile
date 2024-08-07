@@ -246,6 +246,10 @@ version.Rout: version.R
 intervalPlots.Rout: intervalPlots.R public_data/intervals.rda 
 	$(pipeR)
 
+## Summary stats
+intervals.Rout: intervals.R public_data/intervals.rda 
+	$(pipeR)
+
 ######################################################################
 
 ### Makestuff
