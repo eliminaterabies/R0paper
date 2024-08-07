@@ -1,7 +1,5 @@
-
 library(shellpipes)
 manageConflicts()
-startGraphics()
 
 library(tidyr)
 library(dplyr)
