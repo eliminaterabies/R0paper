@@ -1,6 +1,10 @@
 ## This is R0paper 2024 May 21 (Tue)
 ## https://github.com/eliminaterabies/R0paper
 
+## Current goal! get public_data stuff out of Makefile
+## Note, once this is done, we need to replace it or something!
+## Yes, just make old public_data into outputs for now, and then git mv that directory
+
 current: target
 -include target.mk
 Ignore = target.mk
@@ -233,6 +237,7 @@ R0est_funs.Rout: R0est_funs.R
 
 Sources += $(wildcard slow/*.rda)
 
+## This slow target is slow, according to WZ
 ## slow/egf_R0.Rout: egf_R0.R R0est_funs.R simparams.R
 ## slowtarget/egf_R0.Rout: egf_R0.R simparams.R
 slowtarget/egf_R0.Rout: egf_R0.R exp.egf_sample.rds logistic.egf_sample.rds simR0_funs.rda R0est_funs.rda public_data/intervals.rda public_data/biteDist.rds simparams.rda

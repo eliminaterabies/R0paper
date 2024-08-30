@@ -1,0 +1,57 @@
+
+R version 4.4.0 (2024-04-24) -- "Puppy Cup"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(shellpipes)
+> manageConflicts()
+> 
+> library(dplyr)
+> library(readr)
+> 
+> ## Consider checking column types if there is a big upstream change
+> ## There is a known problem in column 65, we're not using it.
+> ## Should this logic be moved upstream?
+> ## At some point use select in the pipeline repo to create a smaller csv
+> animal <- csvRead(comment="#", show_col_types=FALSE, col_select = -65)
+> 
+> ## number of cases (Serengeti dog cases)
+> print(dim(animal))
+[1] 8636   72
+> 
+> ## Number of transmission events
+> 
+> dogsTransmissionNum <- nrow(animal)
+> 
+> ## Number of suspected cases 
+> SuspectDogs <- (animal 
++ 	%>% filter(Suspect %in% c("Yes","To Do", "Unknown"))
++ )
+> 
+> dogsSuspectedNum <- nrow(SuspectDogs %>% select(ID) %>% distinct())
+> 
+> ## Dogs with unknown biters
+> 
+> dogsUnknownBiter <- (SuspectDogs
++ 	%>% filter(Biter.ID == 0)
++ )
+> 
+> unknownBiters <- nrow(dogsUnknownBiter)
+> 
+> saveVars(dogsTransmissionNum, dogsSuspectedNum, unknownBiters)
+> 
+> 
