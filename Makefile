@@ -162,7 +162,7 @@ Sources += public_data/*.rd*
 msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda public_data/intervals.rda public_data/linked.rda simparams.rda
 	$(pipeR)
 
-## bitten bitedis.rds
+## bitten biteDist.rds
 
 ######################################################################
 
