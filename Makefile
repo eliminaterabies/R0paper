@@ -159,7 +159,26 @@ monthly.Rout: monthly.R public_data/R0rabiesdataMonthly.csv public_data/monthlyT
 ## These are tailored output files that we can share
 
 Sources += public_data/*.rd*
-msvals.Rout: msvals.R public_data/bitten.rda slow/egf_R0.rda public_data/intervals.rda public_data/linked.rda simparams.rda
+msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda public_data/intervals.rda public_data/linked.rda simparams.rda
+	$(pipeR)
+
+## bitten bitedis.rds
+
+######################################################################
+
+## 2024 Aug 30 (Fri)
+## Replace the above cribbing with simple code based on new link/pipeline?
+
+## Link to Tanzanian data 
+
+-include ../datalinks.mk
+
+## dogs.csv:
+## update_dogs:
+
+######################################################################
+
+biteNumber.Rout: biteNumber.R dogs.csv
 	$(pipeR)
 
 ######################################################################
