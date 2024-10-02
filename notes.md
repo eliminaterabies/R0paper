@@ -1,4 +1,18 @@
+2024 Oct 02 (Wed)
+=================
+
+What is in public_data and how do we replicate it?
+public_data/biteDist.rds
+public_data/bitten.rda
+public_data/intervals.rda
+public_data/linked.rda
+public_data/monthlyTSdogs.csv
+public_data/R0rabiesdataMonthly.csv
+public_data/series.tsv
+public_data/varnames.tsv
+
 2024 Feb 25 (Sun)
+=================
 
 Went over ms, need to fill the new windows stuff. Removed all the Bayesian little r using Stan. Need to use program to print sample/estimates directly instead of writting it out. Need to switch out serial interval from mexico plot with constructed GI from Hampson2009 (proxy serial). 
 

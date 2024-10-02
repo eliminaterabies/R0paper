@@ -30,9 +30,8 @@ draft.final.pdf: $(Sources)
 
 draft.pdf: doc.Rnw
 
-draft.tex.deps: texknit/doc.tex.makedeps 
-
-texknit/doc.tex.deps: | texknit
+## draft.tex.deps: texknit/doc.tex.makedeps 
+## texknit/doc.tex.deps: | texknit
 texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
 
 ######################################################################
@@ -159,14 +158,20 @@ monthly.Rout: monthly.R public_data/R0rabiesdataMonthly.csv public_data/monthlyT
 
 ######################################################################
 
+## This is terrible, we want to deprecate this old repo and get stuff from links
 ## public_data is cribbed from the egfR0 repo
 ## These are tailored output files that we can share
 
 Sources += public_data/*.rd*
-msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda public_data/intervals.rda public_data/linked.rda simparams.rda
+msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda link_data/intervals.rda link_data/linked.rda simparams.rda
 	$(pipeR)
 
 ## bitten biteDist.rds
+
+## Update this rule at some point to clone if necessary:
+link_data: dir = ../link/outputs
+link_data:
+	$(linkdirname)
 
 ######################################################################
 
@@ -177,11 +182,9 @@ msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda public_data/intervals.rda p
 
 -include ../datalinks.mk
 
-## dogs.csv:
-## update_dogs:
-
 ######################################################################
 
+## Should this come straight from pipeline or
 biteNumber.Rout: biteNumber.R dogs.csv
 	$(pipeR)
 
@@ -289,4 +292,3 @@ makestuff/%.stamp:
 -include makestuff/git.mk
 -include makestuff/gitbranch.mk
 -include makestuff/visual.mk
-
