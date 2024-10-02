@@ -5,6 +5,8 @@
 ## Note, once this is done, we need to replace it or something!
 ## Yes, just make old public_data into outputs for now, and then git mv that directory
 
+cmain = main
+
 current: target
 -include target.mk
 Ignore = target.mk
@@ -32,7 +34,14 @@ draft.pdf: doc.Rnw
 
 ## draft.tex.deps: texknit/doc.tex.makedeps 
 ## texknit/doc.tex.deps: | texknit
-texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
+## texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
+
+## Debugging stuff
+## draft.tex.mk: makestuff/texj.pl
+## texknit/doc.tex.mk: makestuff/texj.pl
+
+## Manually declare tex-file dependencies
+draft.texdeps.mk: texknit/doc.texdeps.mk
 
 ######################################################################
 ## TODO: fancify and export both of these recipe lines ☺
@@ -266,6 +275,10 @@ version.Rout: version.R
 ######################################################################
 
 intervalPlots.Rout: intervalPlots.R public_data/intervals.rda 
+	$(pipeR)
+
+## Summary stats
+intervals.Rout: intervals.R public_data/intervals.rda 
 	$(pipeR)
 
 ######################################################################
