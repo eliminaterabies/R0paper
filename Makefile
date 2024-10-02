@@ -168,6 +168,7 @@ msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda link_data/intervals.rda lin
 
 ## bitten biteDist.rds
 
+## Started ONLY 2024 Oct 02 (Wed):!
 ## Update this rule at some point to clone if necessary:
 link_data: dir = ../link/outputs
 link_data:
