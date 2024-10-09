@@ -1,4 +1,9 @@
 ## This is R0paper 2024 May 21 (Tue)
+## https://github.com/eliminaterabies/R0paper
+
+## Current goal! get public_data stuff out of Makefile
+## Note, once this is done, we need to replace it or something!
+## Yes, just make old public_data into outputs for now, and then git mv that directory
 
 cmain = main
 
@@ -27,8 +32,9 @@ draft.final.pdf: $(Sources)
 
 draft.pdf: doc.Rnw
 
-texknit/doc.tex.deps: | texknit
-texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
+## draft.tex.deps: texknit/doc.tex.makedeps 
+## texknit/doc.tex.deps: | texknit
+## texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
 
 ## Debugging stuff
 ## draft.tex.mk: makestuff/texj.pl
@@ -161,11 +167,35 @@ monthly.Rout: monthly.R public_data/R0rabiesdataMonthly.csv public_data/monthlyT
 
 ######################################################################
 
+## This is terrible, we want to deprecate this old repo and get stuff from links
 ## public_data is cribbed from the egfR0 repo
 ## These are tailored output files that we can share
 
 Sources += public_data/*.rd*
-msvals.Rout: msvals.R public_data/bitten.rda slow/egf_R0.rda public_data/intervals.rda public_data/linked.rda simparams.rda
+msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda link_data/intervals.rda link_data/linked.rda simparams.rda
+	$(pipeR)
+
+## bitten biteDist.rds
+
+## Started ONLY 2024 Oct 02 (Wed):!
+## Update this rule at some point to clone if necessary:
+link_data: dir = ../link/outputs
+link_data:
+	$(linkdirname)
+
+######################################################################
+
+## 2024 Aug 30 (Fri)
+## Replace the above cribbing with simple code based on new link/pipeline?
+
+## Link to Tanzanian data 
+
+-include ../datalinks.mk
+
+######################################################################
+
+## Should this come straight from pipeline or
+biteNumber.Rout: biteNumber.R dogs.csv
 	$(pipeR)
 
 ######################################################################
@@ -220,6 +250,7 @@ R0est_funs.Rout: R0est_funs.R
 
 Sources += $(wildcard slow/*.rda)
 
+## This slow target is slow, according to WZ
 ## slow/egf_R0.Rout: egf_R0.R R0est_funs.R simparams.R
 ## slowtarget/egf_R0.Rout: egf_R0.R simparams.R
 slowtarget/egf_R0.Rout: egf_R0.R exp.egf_sample.rds logistic.egf_sample.rds simR0_funs.rda R0est_funs.rda public_data/intervals.rda public_data/biteDist.rds simparams.rda
@@ -275,4 +306,3 @@ makestuff/%.stamp:
 -include makestuff/git.mk
 -include makestuff/gitbranch.mk
 -include makestuff/visual.mk
-
