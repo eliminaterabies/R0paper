@@ -70,7 +70,7 @@ However, growth rates estimated from an exponential model can be biased downward
 Here we used logistic rather than exponential curves to more robustly estimate \littler \citep{ma2014estimating, chowell2017fitting}.
 
 %\mr{code-formatted variable names may be alienating, maybe describe in more conventional terms with either just words, or mathy variable names?}
-We selected fitting windows algorithmically for each outbreak as follows: (1) we break each time series into “phases”: a new phase starts after a peak with a height of at least \code{minPeak} (\code{\Sexpr{minPeak}}) for this MS) cases, followed by a proportional decline in cases of at least \code{declineRatio} (\code{\Sexpr{declineRatio}}); (2) In each phase, we identify a prospective fitting window starting after the last observation of 0 cases and extending one observation past the highest value in the phase (unless the highest value is itself the last observation); (3) we then fit our model to the cases in the fitting window if (and only if) it has a peak of at least \code{minPeak} cases, a length of at least \code{minLength} (\code{\Sexpr{minLength}}) observations, and a ratio of at least \code{minClimb} (\code{\Sexpr{minClimb}}) between the highest and lowest observations. We tried a handful of parameter combinations before settling on a final set during an expert consultation. These explorations are detailed in our code repository.
+We selected fitting windows algorithmically for each outbreak as follows: (1) we break each time series into “phases”: a new phase starts after a peak with a height of at least \code{minPeak} (\code{\Sexpr{minPeak}} for this MS) cases, followed by a proportional decline in cases of at least \code{declineRatio} (\code{\Sexpr{declineRatio}}); (2) In each phase, we identify a prospective fitting window starting after the last observation of 0 cases and extending one observation past the highest value in the phase (unless the highest value is itself the last observation); (3) we then fit our model to the cases in the fitting window if (and only if) it has a peak of at least \code{minPeak} cases, a length of at least \code{minLength} (\code{\Sexpr{minLength}}) observations, and a ratio of at least \code{minClimb} (\code{\Sexpr{minClimb}}) between the highest and lowest observations. We tried a handful of parameter combinations before settling on a final set during an expert consultation. These explorations are detailed in our code repository.
 
 \subsection*{Observed Generation intervals}
 
@@ -109,7 +109,11 @@ For a given population with $\nu$ vaccination proportion, the estimated $\rzero$
 \subsection*{Data}
 
 We used data from December 2002 -- November 2022, from an ongoing contact tracing study in Tanzania \citep{hampson2008rabies, hampson2009transmission}.
+<<<<<<< HEAD
 The data set contains \Sexpr{dogsTransmissionNum} domestic dog recorded events (i.e., domestic dogs bitten by an animal) from Serengeti District of northern Tanzania.
+=======
+The data set contains \Sexpr{biteEvents} domestic dog recorded events (i.e., domestic dogs bitten by an animal), and \Sexpr{suspectedNum} suspected rabid dogs in the Serengeti District of northern Tanzania.
+>>>>>>> 83e52b77b56c66b29a757c373819bd83ebed2113
 Transmission events were documented through retrospective interviews with witnesses, applying diagnostic epidemiological and clinical criteria from the six-step method \citep{tepsumethanon2005six}.
 Each dog was given a unique identifier, and date of the bite and clinical signs were recorded if applicable and available.
 We restricted our analysis to domestic dog transmissions (i.e., dog to dog) \mli{x linked transmissions and of those yy are biters and non-biters}.

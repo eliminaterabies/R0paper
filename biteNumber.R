@@ -10,27 +10,19 @@ library(readr)
 ## At some point use select in the pipeline repo to create a smaller csv
 animal <- csvRead(comment="#", show_col_types=FALSE, col_select = -65)
 
-## number of cases (Serengeti dog cases)
-print(dim(animal))
-
 ## Number of transmission events
 
-dogsTransmissionNum <- nrow(animal)
+biteEvents <- nrow(animal)
 
 ## Number of suspected cases 
-SuspectDogs <- (animal 
-	%>% filter(Suspect %in% c("Yes","To Do", "Unknown"))
+suspectedNum <- (animal 
+	|> filter(Suspect %in% c("Yes","To Do", "Unknown"))
+	|> select(ID)
+	|> distinct()
+	|> nrow()
 )
 
-dogsSuspectedNum <- nrow(SuspectDogs %>% select(ID) %>% distinct())
+print(c(trans=biteEvents, susp=suspectedNum))
 
-## Dogs with unknown biters
-
-dogsUnknownBiter <- (SuspectDogs
-	%>% filter(Biter.ID == 0)
-)
-
-unknownBiters <- nrow(dogsUnknownBiter)
-
-saveVars(dogsTransmissionNum, dogsSuspectedNum, unknownBiters)
+saveVars(biteEvents, suspectedNum)
 

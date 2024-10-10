@@ -34,7 +34,7 @@ draft.pdf: doc.Rnw
 
 ## draft.tex.deps: texknit/doc.tex.makedeps 
 ## texknit/doc.tex.deps: | texknit
-## texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
+texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
 
 ## Debugging stuff
 ## draft.tex.mk: makestuff/texj.pl
@@ -172,30 +172,27 @@ monthly.Rout: monthly.R public_data/R0rabiesdataMonthly.csv public_data/monthlyT
 ## These are tailored output files that we can share
 
 Sources += public_data/*.rd*
-msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda link_data/intervals.rda link_data/linked.rda simparams.rda
+msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda link/intervals.rda link/linked.rda simparams.rda
 	$(pipeR)
 
 ## bitten biteDist.rds
 
-## Started ONLY 2024 Oct 02 (Wed):!
-## Update this rule at some point to clone if necessary:
-link_data: dir = ../link/outputs
-link_data:
-	$(linkdirname)
 
 ######################################################################
 
-## 2024 Aug 30 (Fri)
-## Replace the above cribbing with simple code based on new link/pipeline?
-
+##### 2024 Oct 16 (Wed)
+## Built this all with Dropbox right before Dropbox stabbed JD in the heart
 ## Link to Tanzanian data 
-
--include ../datalinks.mk
+## -include ../datalinks.mk
 
 ######################################################################
 
-## Should this come straight from pipeline or
-biteNumber.Rout: biteNumber.R dogs.csv
+pardirs += new_pipeline link
+hotdirs += $(pardirs)
+Ignore += $(pardirs)
+
+## Count number of bite events and number of suspected biters
+biteNumber.Rout: biteNumber.R new_pipeline/SD_dogs.incubation.Rout.csv
 	$(pipeR)
 
 ######################################################################
@@ -302,7 +299,7 @@ makestuff/%.stamp:
 -include makestuff/pipeR.mk
 -include makestuff/texj.mk
 -include makestuff/slowtarget.mk
-
+-include makestuff/hotcold.mk
 -include makestuff/git.mk
 -include makestuff/gitbranch.mk
 -include makestuff/visual.mk
