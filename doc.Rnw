@@ -109,11 +109,11 @@ For a given population with $\nu$ vaccination proportion, the estimated $\rzero$
 \subsection*{Data}
 
 We used data from December 2002 -- November 2022, from an ongoing contact tracing study in Tanzania \citep{hampson2008rabies, hampson2009transmission}.
-The data set contains \Sexpr{dogsTransmissionNum} domestic dog recorded events (i.e., domestic dogs bitten by an animal), and \Sexpr{dogsSuspectedNum} suspected rabid dogs in the Serengeti District of northern Tanzania.
+The data set contains \Sexpr{dogsTransmissionNum} domestic dog recorded events (i.e., domestic dogs bitten by an animal) from Serengeti District of northern Tanzania.
 Transmission events were documented through retrospective interviews with witnesses, applying diagnostic epidemiological and clinical criteria from the six-step method \citep{tepsumethanon2005six}.
 Each dog was given a unique identifier, and date of the bite and clinical signs were recorded if applicable and available.
-\Sexpr{unknownBiters} of the dog transmissions were from unidentified domestic animals or wildlife.
-We restricted our analysis to domestic dog transmissions (i.e., dog to dog), and obtained \Sexpr{GIcount} directly observed generation intervals (i.e. both biter and secondary case have ``time bitten" records).
+We restricted our analysis to domestic dog transmissions (i.e., dog to dog) \mli{x linked transmissions and of those yy are biters and non-biters}.
+, and obtained \Sexpr{GIcount} directly observed generation intervals (i.e. both biter and secondary case have ``time bitten" records).
 There were four observed dogs with multiple exposures (i.e., bitten by different identified biters), generating extra generation intervals, but it is unclear which transmission event transmitted rabies to these dogs.
 For simplicity, we omitted these four dogs and their generation intervals from our analysis.
 
