@@ -188,14 +188,16 @@ link_data:
 ## 2024 Aug 30 (Fri)
 ## Replace the above cribbing with simple code based on new link/pipeline?
 
+## Built this all with Dropbox right before Dropbox stabbed JD in the heart
 ## Link to Tanzanian data 
-
--include ../datalinks.mk
+## -include ../datalinks.mk
 
 ######################################################################
 
-## Should this come straight from pipeline or
-biteNumber.Rout: biteNumber.R dogs.csv
+pardirs += new_pipeline
+hotdirs += $(pardirs)
+
+biteNumber.Rout: biteNumber.R new_pipeline/SD_dogs.incubation.Rout.csv
 	$(pipeR)
 
 ######################################################################
@@ -302,7 +304,7 @@ makestuff/%.stamp:
 -include makestuff/pipeR.mk
 -include makestuff/texj.mk
 -include makestuff/slowtarget.mk
-
+-include makestuff/hotcold.mk
 -include makestuff/git.mk
 -include makestuff/gitbranch.mk
 -include makestuff/visual.mk
