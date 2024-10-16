@@ -172,16 +172,11 @@ monthly.Rout: monthly.R public_data/R0rabiesdataMonthly.csv public_data/monthlyT
 ## These are tailored output files that we can share
 
 Sources += public_data/*.rd*
-msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda link_data/intervals.rda link_data/linked.rda simparams.rda
+msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda link/intervals.rda link/linked.rda simparams.rda
 	$(pipeR)
 
 ## bitten biteDist.rds
 
-## Started ONLY 2024 Oct 02 (Wed):!
-## Update this rule at some point to clone if necessary:
-link_data: dir = ../link/outputs
-link_data:
-	$(linkdirname)
 
 ######################################################################
 
@@ -194,9 +189,10 @@ link_data:
 
 ######################################################################
 
-pardirs += new_pipeline
+pardirs += new_pipeline link
 hotdirs += $(pardirs)
 
+## Count number of bite events and number of suspected biters
 biteNumber.Rout: biteNumber.R new_pipeline/SD_dogs.incubation.Rout.csv
 	$(pipeR)
 
