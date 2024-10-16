@@ -189,6 +189,7 @@ msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda link/intervals.rda link/lin
 
 pardirs += new_pipeline link
 hotdirs += $(pardirs)
+Ignore += $(pardirs)
 
 ## Count number of bite events and number of suspected biters
 biteNumber.Rout: biteNumber.R new_pipeline/SD_dogs.incubation.Rout.csv
