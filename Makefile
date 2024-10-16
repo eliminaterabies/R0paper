@@ -32,6 +32,7 @@ draft.final.pdf: $(Sources)
 
 draft.pdf: doc.Rnw
 
+## delphi is fine
 ## draft.tex.deps: texknit/doc.tex.makedeps 
 ## texknit/doc.tex.deps: | texknit
 ## texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
