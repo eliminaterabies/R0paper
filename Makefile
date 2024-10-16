@@ -34,8 +34,7 @@ draft.pdf: doc.Rnw
 
 ## draft.tex.deps: texknit/doc.tex.makedeps 
 ## texknit/doc.tex.deps: | texknit
-## texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
-texknit/doc.tex: delphi.pars.rda | texknit
+texknit/doc.tex: delphi.pars.rda msvals.rda | texknit
 
 ## Debugging stuff
 ## draft.tex.mk: makestuff/texj.pl
