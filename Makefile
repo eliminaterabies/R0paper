@@ -180,9 +180,7 @@ msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda link/intervals.rda link/lin
 
 ######################################################################
 
-## 2024 Aug 30 (Fri)
-## Replace the above cribbing with simple code based on new link/pipeline?
-
+##### 2024 Oct 16 (Wed)
 ## Built this all with Dropbox right before Dropbox stabbed JD in the heart
 ## Link to Tanzanian data 
 ## -include ../datalinks.mk
