@@ -171,8 +171,10 @@ monthly.Rout: monthly.R public_data/R0rabiesdataMonthly.csv public_data/monthlyT
 ## public_data is cribbed from the egfR0 repo
 ## These are tailored output files that we can share
 
+
+Sources += msvals.md
 Sources += public_data/*.rd*
-msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda link/intervals.rda link/linked.rda simparams.rda
+msvals.Rout: msvals.R biteNumber.rda slow/egf_R0.rda public_data/intervals.rda link/linked.rda simparams.rda
 	$(pipeR)
 
 ## bitten biteDist.rds
@@ -271,11 +273,12 @@ version.Rout: version.R
 
 ######################################################################
 
+
 intervalPlots.Rout: intervalPlots.R public_data/intervals.rda 
 	$(pipeR)
 
 ## Summary stats
-intervals.Rout: intervals.R public_data/intervals.rda 
+intervalStats.Rout: intervalStats.R public_data/intervals.rda 
 	$(pipeR)
 
 ######################################################################
